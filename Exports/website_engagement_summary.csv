@@ -1,0 +1,4 @@
+website_engagement_segment,customer_count,avg_calculated_value,median_calculated_value,avg_website_visits,avg_customer_support_calls,churn_rate
+High Website Engagement,250148,12780.02,9708.2,87.0,9.53,49.95
+Low Website Engagement,249923,12757.08,9666.57,11.99,9.5,50.05
+Medium Website Engagement,499929,12733.34,9643.9,49.51,9.48,49.95

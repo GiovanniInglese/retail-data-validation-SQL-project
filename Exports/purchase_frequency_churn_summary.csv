@@ -1,0 +1,5 @@
+purchase_frequency,customer_count,median_calculated_value,avg_calculated_value,churn_rate,avg_transaction_value,avg_total_transactions
+Weekly,249768,9698.42,12784.67,50.08,255.31,50.08
+Monthly,249932,9679.58,12759.03,49.8,254.91,50.03
+Daily,249533,9640.8,12739.09,49.95,255.09,49.98
+Yearly,250767,9636.66,12721.11,50.06,255.16,49.86

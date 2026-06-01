@@ -1,0 +1,4 @@
+promotion_type,customer_count,total_calculated_value,avg_calculated_value,median_calculated_value,avg_discount_used,avg_total_discounts_received,churn_rate,promotion_value_rank
+Buy One Get One Free,333520,4260733536.83,12775.05,9698.86,0.25,500.24,49.96,1
+20% Off,333712,4251184711.94,12739.08,9651.25,0.25,499.71,49.99,2
+Flash Sale,332768,4239031585.24,12738.7,9645.29,0.25,499.08,49.97,3

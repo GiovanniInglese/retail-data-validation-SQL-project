@@ -1,0 +1,5 @@
+Data/Raw/
+Data/processed/sql_tables/
+.ipynb_checkpoints/
+__pycache__/
+*.pyc

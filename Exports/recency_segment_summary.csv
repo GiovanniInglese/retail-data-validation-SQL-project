@@ -1,0 +1,5 @@
+recency_segment,customer_count,median_calculated_value,avg_calculated_value,churn_rate,avg_days_since_last_purchase,avg_customer_support_calls
+Recent,84773,9679.46,12765.13,49.94,14.93,9.47
+Inactive,504091,9671.62,12759.18,49.94,272.53,9.5
+Dormant,246658,9696.66,12755.1,49.94,135.53,9.5
+At risk,164478,9585.88,12712.19,50.13,60.5,9.5

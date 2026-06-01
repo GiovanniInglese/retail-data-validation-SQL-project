@@ -1,0 +1,4 @@
+calculated_value_segment,customer_count,avg_calculated_value,avg_transaction_value,avg_total_transactions,churn_rate
+High Calculated Value,333334,25878.04,364.58,72.48,49.94
+Medium Calculated Value,333333,9930.31,246.84,49.06,50.0
+Low Calculated Value,333333,2444.46,153.93,28.41,49.98

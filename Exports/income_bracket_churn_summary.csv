@@ -1,0 +1,4 @@
+income_bracket,customer_count,avg_calculated_value,churn_rate,median_calculated_value,avg_transaction_value,avg_total_transactions
+Low,333021,12770.91,49.94,9709.5,255.32,50.03
+Medium,333367,12754.37,50.04,9671.04,255.38,49.97
+High,333612,12727.61,49.94,9613.69,254.65,49.97

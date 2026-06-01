@@ -1,0 +1,6 @@
+product_category,customer_count,total_calculated_value,avg_calculated_value,median_calculated_value,avg_transaction_value,avg_total_transactions,category_value_rank
+Toys,200669,2559169954.12,12753.19,9684.48,254.9,50.03,1
+Groceries,200214,2555057507.97,12761.63,9667.7,255.4,49.95,2
+Clothing,199778,2552959753.14,12778.98,9686.67,255.48,50.01,3
+Furniture,199583,2544757292.57,12750.37,9635.44,254.98,49.98,4
+Electronics,199756,2539005326.21,12710.53,9649.68,254.82,49.96,5
