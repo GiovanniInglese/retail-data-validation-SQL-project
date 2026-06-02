@@ -1,4 +1,16 @@
-# Comprehensive customer value analysis by segment
+-- Retail Customer Behavior Data Validation & SQL Analytics Project
+-- SQL Practice Queries
+-- Note: These queries were written using DuckDB SQL syntax.
+-- The dataset was found to be highly synthetic, so these queries are used for SQL/reporting practice rather than strong business recommendations.
+
+
+
+
+
+
+
+
+-- 1. Churn by Customer Value Segment
 SELECT 
     p.calculated_value_segment,
     COUNT(c.customer_id) AS customer_count,
@@ -13,9 +25,7 @@ GROUP BY p.calculated_value_segment
 ORDER BY avg_calculated_value DESC;
 
 
-
-# Customer value analysis by loyalty program
-
+-- 2. Loyalty Program Customer Value and Churn
 select
 c.loyalty_program,
 count(*) as customer_count,
@@ -31,8 +41,7 @@ order by avg_calculated_value desc
 
 
 
-
-# Customer value analysis by loyalty program with median value
+-- 3. Income Bracket Customer Value and Churn
 select
 c.income_bracket,
 count(*) as customer_count,
@@ -48,8 +57,7 @@ order by avg_calculated_value desc
 
 
 
-# Customer value analysis by purchase frequency
-
+-- 4. Purchase Frequency Customer Value and Churn
 select
 b.purchase_frequency,
 count(*) as customer_count,
@@ -68,33 +76,50 @@ group by b.purchase_frequency
 order by avg_calculated_value desc
 
 
-# Customer value analysis by recency segments using CTE's
+-- 5. Recency Segment CTE and Window Function
+with recency_summary as(
+    select
+    CASE
+    when b.days_since_last_purchase <= 30 then 'Recent'
+    when b.days_since_last_purchase <= 90 then 'At risk'
+    when b.days_since_last_purchase <= 180 then 'Dormant'
+    else 'Inactive'
+    end as recency_segment,
+    count(*) as customer_count,
+    round(avg(p.calculated_customer_value),2) as avg_calculated_value,
+    round(median(p.calculated_customer_value),2) as median_calculated_value,
+    round(avg(b.days_since_last_purchase),2) as avg_days_since_last_purchase,
+    round(avg(b.customer_support_calls),2) as avg_customer_support_calls,
+    round(avg(c.churned_flag)*100,2) as churn_rate
 
-Select
-case
-when b.days_since_last_purchase <= 30 then 'Recent'
-when b.days_since_last_purchase <= 90 then 'At risk'
-when b.days_since_last_purchase <= 180 then 'Dormant'
-else 'Inactive'
-end as recency_segment,
-count(*) as customer_count,
-round(median(p.calculated_customer_value),2) as median_calculated_value,
-round(avg(p.calculated_customer_value),2) as avg_calculated_value,
-round(avg(c.churned_flag)*100,2) as churn_rate,
-round(avg(b.days_since_last_purchase),2) as avg_days_since_last_purchase,
-round(avg(b.customer_support_calls),2) as avg_customer_support_calls,
-from customer_behavior b
-join purchase_activity p on b.customer_id = p.customer_id
-join customers c on b.customer_id = c.customer_id
-group by recency_segment
-order by avg_calculated_value desc
+    from customer_behavior b
+    join purchase_activity p on b.customer_id = p.customer_id
+    join customers c on b.customer_id = c.customer_id
+    group by
+    CASE
+    when b.days_since_last_purchase <= 30 then 'Recent'
+    when b.days_since_last_purchase <= 90 then 'At risk'
+    when b.days_since_last_purchase <= 180 then 'Dormant'
+    else 'Inactive'
+    end
+
+)
+select
+recency_segment,
+customer_count,
+round(customer_count * 100.0/sum(customer_count) over(), 2) as percentage_of_customers, 
+avg_calculated_value,
+median_calculated_value,
+avg_days_since_last_purchase,
+avg_customer_support_calls,
+churn_rate
+from recency_summary
+order by percentage_of_customers desc
 
 
 
 
-
-# Customer value analysis by product category with ranking
-
+-- 6. Product Category Ranking
     SELECT
         pr.product_category,
         COUNT(*) AS customer_count,
@@ -123,8 +148,7 @@ ORDER BY category_value_rank;
 
 
 
-# Customer value analysis by promotion type with ranking
-
+-- 7. Promotion Type Ranking
 WITH promotion_summary AS (
     SELECT
         promo.promotion_type,
